@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игра с убегающей кнопкой</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        .question {
+            font-size: 30px;
+            margin-bottom: 40px;
+        }
+        .buttons {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            font-size: 21px;
+            padding: 20px 30px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        .yes {
+            background-color: #00ff08;
+            color: white;
+        }
+        .no {
+            background-color: #ff2f00;
+            color: white;
+            position: absolute;
+        }
+        .image-container {
+            margin-top: 20px;
+            display: none;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="question">Купи сладенького пожалуйста</div>
+    <div class="buttons">
+        <button class="yes" onclick="showFunnyImage()">Да</button>
+        <button class="no" onmouseover="moveButton()">Нет</button>
+    </div>
+
+    <div class="image-container" id="imageContainer">
+        <img id="funnyImage" src="" alt="Смешная картинка">
+    </div>
+
+    <script>
+        function moveButton() {
+            let button = document.querySelector('.no');
+            let maxWidth = window.innerWidth - 100; // Учитываем ширину окна
+            let maxHeight = window.innerHeight - 100; // Учитываем высоту окна
+            
+            let newX = Math.random() * maxWidth;
+            let newY = Math.random() * maxHeight;
+            
+            button.style.left = newX + 'px';
+            button.style.top = newY + 'px';
+        }
+
+        function showFunnyImage() {
+            let imageContainer = document.getElementById("imageContainer");
+            let funnyImage = document.getElementById("funnyImage");
+
+            funnyImage.src = "для прикола.jpg"; // Используем загруженное изображение
+            imageContainer.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
